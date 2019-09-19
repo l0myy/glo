@@ -116,6 +116,10 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'descr' =>'Description',
+        'title'=>'Title',
+        'img'=>'Image'
+    ],
 
 ];
