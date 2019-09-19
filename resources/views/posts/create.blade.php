@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.layout',['title'=>'Create a new post'])
 
 @section('content')
     <form action="{{ route('post.store') }}" method="post" enctype="multipart/form-data" xmlns="http://www.w3.org/1999/html">
