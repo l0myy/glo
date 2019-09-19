@@ -60,6 +60,7 @@ class PostController extends Controller
             $path = Storage::putFile('public', $request->file('img'));
             $url = Storage::url($path);
             $post->img = $url;
+
         }
 
         $post->save();
@@ -102,7 +103,20 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $post = Post::find($id);
+        $post->title = $request->title;
+        $post->short_title = Str::length($request->title) > 30 ? Str::substr($request->title, 0, 30) . "..." : $request->title;
+        $post->descr = $request->descr;
 
+        if ($request->file('img')) {
+            $path = Storage::putFile('public', $request->file('img'));
+            $url = Storage::url($path);
+            $post->img = $url;
+        }
+
+        $post->update();
+        $id = $post->id;
+        return redirect()->route('post.show',compact('id'))->with('success', 'Post updated successfully!');
     }
 
     /**
@@ -113,6 +127,8 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        $post->delete();
+        return redirect()->route('post.index')->with('success', 'Post deleted successfully!');
     }
 }
