@@ -119,7 +119,7 @@ return [
     'attributes' => [
         'descr' =>'Description',
         'title'=>'Title',
-        'img'=>'Image'
+        'img'=>'Image',
     ],
 
 ];

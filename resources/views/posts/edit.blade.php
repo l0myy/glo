@@ -1,7 +1,7 @@
-@extends('layouts.layout',['title'=>"Edit post №$post->id"])
+@extends('layouts.layout',['title'=>"Edit post №$post->post_id"])
 
 @section('content')
-    <form action="{{ route('post.update',['id'=>$post->id]) }}" method="post" enctype="multipart/form-data" xmlns="http://www.w3.org/1999/html">
+    <form action="{{ route('post.update',['id'=>$post->post_id]) }}" method="post" enctype="multipart/form-data" xmlns="http://www.w3.org/1999/html">
         @csrf
         @method('PATCH')
         <h3>Edit post</h3>
